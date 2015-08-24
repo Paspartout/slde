@@ -1,0 +1,9 @@
+[submodule "dwm"]
+	path = dwm
+	url = git://git.suckless.org/dwm
+[submodule "dmenu"]
+	path = dmenu
+	url = git://git.suckless.org/dmenu
+[submodule "st"]
+	path = st
+	url = git://git.suckless.org/st
