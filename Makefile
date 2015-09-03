@@ -1,14 +1,20 @@
 all: dwm dmenu st
 
-dwm:
-	@cp config/$@.h $@/config.h
+dwm: dwm/config.h
 	@cd $@ && make
-dmenu:
-	@cp config/$@.h $@/config.h
+dmenu: dmenu/config.h
 	@cd $@ && make
-st:
-	@cp config/$@.h $@/config.h
+st: st/config.h
 	@cd $@ && make
+
+dwm/config.h:
+	@ln config/dwm.h $@
+
+dmenu/config.h:
+	@ln config/dmenu.h $@
+
+st/config.h:
+	@ln config/st.h $@
 
 install:
 	@cd dwm && make $@
