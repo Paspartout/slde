@@ -6,7 +6,7 @@
 static Bool topbar = True;                  /* -b  option; if False, dmenu appears at bottom */
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static const char *fonts[] = {
-	"monospace:size=10"
+	"Source Sans Pro:size=14px"
 };
 static const char *prompt      = NULL;      /* -p  option; prompt to the elft of input field */
 static const char *normbgcolor = "#222222"; /* -nb option; normal background                 */
