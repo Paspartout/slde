@@ -8,7 +8,7 @@ static Bool topbar = True;                  /* -b  option; if False, dmenu appea
 static const char *fonts[] = {
 	"Source Sans Pro:size=14px"
 };
-static const char *prompt      = NULL;      /* -p  option; prompt to the elft of input field */
+static const char *prompt      = "> ";      /* -p  option; prompt to the elft of input field */
 static const char *normbgcolor = "#222222"; /* -nb option; normal background                 */
 static const char *normfgcolor = "#bbbbbb"; /* -nf option; normal foreground                 */
 static const char *selbgcolor  = "#005577"; /* -sb option; selected background               */
