@@ -7,3 +7,7 @@
 [submodule "dzen"]
 	path = dzen
 	url = https://github.com/robm/dzen.git
+[submodule "st"]
+	path = st
+	url = https://github.com/Paspartout/st
+	branch = slde
