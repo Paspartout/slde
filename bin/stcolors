@@ -1,0 +1,41 @@
+#!/bin/sh
+
+die()
+{
+	echo "$*" 1>&2
+	exit 1
+}
+
+[ $# -eq 2 ] || die 'usage: stcolors colorfile.yml st-config.h'
+[ -e $1 ] || die "error: $1 is not a file"
+
+IFS=''
+
+colors=$(grep 'base0[0-9A-F]' <$1)
+numcolors=$(echo $colors | wc -l)
+
+[ $numcolors -eq 16 ] || 
+die "there are not exactly 16 color definitions in $1"
+
+IFS='
+'
+
+tmpfile=$(mktemp)
+tmpfile2=$(mktemp)
+
+trap 'rm -f $tmpfile $tmpfile2 ; exit 1' 1 2 15
+
+cp $2 $tmpfile
+
+for c in $colors
+do	
+	key=$(echo $c | sed 's/://g' | awk '{print $1}')
+	val=$(echo $c | sed 's/"//g' | awk '{print $2}')
+	
+	sed 's/#'$key'/#'$val'/g' $tmpfile >$tmpfile2
+	cp $tmpfile2 $tmpfile
+done
+
+cat $tmpfile
+
+rm -f $tmpfile $tmpfile2

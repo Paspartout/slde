@@ -1,3 +1,5 @@
+colorfile = colors/chalk.yml
+
 all: dwm dmenu st
 
 dwm: dwm/config.h
@@ -13,7 +15,10 @@ dwm/config.h:
 dmenu/config.h:
 	@ln config/dmenu.h $@
 
-st/config.h:
+config/st.h:
+	./bin/stcolors $(colorfile) config/st-tpl.h >$@
+
+st/config.h: config/st.h
 	@ln config/st.h $@
 
 install:
@@ -28,5 +33,6 @@ clean:
 	@cd dmenu && rm config.h
 	@cd st && make $@
 	@cd st && rm config.h
+	@rm -f config/st.h
 
 .PHONY: dwm dmenu st clean install
