@@ -14,29 +14,20 @@ IFS=''
 colors=$(grep 'base0[0-9A-F]' <$1)
 numcolors=$(echo $colors | wc -l)
 
-[ $numcolors -eq 16 ] || 
+[ $numcolors -eq 16 ] ||
 die "there are not exactly 16 color definitions in $1"
 
 IFS='
 '
 
-tmpfile=$(mktemp)
-tmpfile2=$(mktemp)
-
-trap 'rm -f $tmpfile $tmpfile2 ; exit 1' 1 2 15
-
-cp $2 $tmpfile
-
+sedcmd=''
 for c in $colors
-do	
+do
 	key=${c%:*}
 	val=${c#* }
 	val=$(echo $val | sed 's/"//g')
 
-	sed 's/#'$key'/'#$val'/g' $tmpfile >$tmpfile2
-	cp $tmpfile2 $tmpfile
+	sedcmd=$sedcmd';s/#'$key'/'#$val'/g'
 done
 
-cat $tmpfile
-
-rm -f $tmpfile $tmpfile2
+sed "$sedcmd" $2
