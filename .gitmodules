@@ -4,9 +4,6 @@
 [submodule "dmenu"]
 	path = dmenu
 	url = git://git.suckless.org/dmenu
-[submodule "st"]
-	path = st
-	url = git://git.suckless.org/st
 [submodule "dzen"]
 	path = dzen
 	url = https://github.com/robm/dzen.git
