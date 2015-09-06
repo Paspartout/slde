@@ -1,4 +1,4 @@
-colorfile = colors/chalk.yml
+colorfile = colors/flat.yml
 
 all: dwm dmenu st
 
@@ -9,17 +9,23 @@ dmenu: dmenu/config.h
 st: st/config.h
 	@cd $@ && make
 
-dwm/config.h:
+dwm/config.h: config/dwm.h
 	@ln config/dwm.h $@
 
-dmenu/config.h:
+dmenu/config.h: config/dmenu.h
 	@ln config/dmenu.h $@
-
-config/st.h:
-	./bin/stcolors $(colorfile) config/st-tpl.h >$@
 
 st/config.h: config/st.h
 	@ln config/st.h $@
+
+config/dwm.h:
+	./bin/colortpl $(colorfile) config/dwm-tpl.h >$@
+
+config/dmenu.h:
+	./bin/colortpl $(colorfile) config/dmenu-tpl.h >$@
+
+config/st.h:
+	./bin/colortpl $(colorfile) config/st-tpl.h >$@
 
 install:
 	@cd dwm && make $@
@@ -33,6 +39,8 @@ clean:
 	@cd dmenu && rm config.h
 	@cd st && make $@
 	@cd st && rm config.h
+	@rm -f config/dwm.h
+	@rm -f config/dmenu.h
 	@rm -f config/st.h
 
 .PHONY: dwm dmenu st clean install

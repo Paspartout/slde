@@ -5,12 +5,12 @@ static const char *fonts[] = {
     "Source Sans Pro:size=14px",
 };
 static const char dmenufont[] = "Source Sans Pro:size=14px";
-static const char normbordercolor[] = "#444444";
-static const char normbgcolor[]     = "#222222";
-static const char normfgcolor[]     = "#bbbbbb";
-static const char selbordercolor[]  = "#005577";
-static const char selbgcolor[]      = "#005577";
-static const char selfgcolor[]      = "#eeeeee";
+static const char normbordercolor[] = "#base07";
+static const char normbgcolor[]     = "#base00";
+static const char normfgcolor[]     = "#base06";
+static const char selbordercolor[]  = "#base0D";
+static const char selbgcolor[]      = "#base0D";
+static const char selfgcolor[]      = "#base06";
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const Bool showbar           = True;     /* False means no bar */
