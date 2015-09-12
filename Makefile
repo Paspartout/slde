@@ -1,4 +1,4 @@
-colorfile = colors/flat.yml
+colorfile = colors/google.yml
 
 all: dwm dmenu st
 
