@@ -1,9 +1,7 @@
 /* See LICENSE file for copyright and license details. */
-/* vim: expandtab
- */
-/* Default settings; can be overrided by command line. */
+/* Default settings; can be overriden by command line. */
 
-static Bool topbar = True;                  /* -b  option; if False, dmenu appears at bottom */
+static int topbar = 1;                      /* -b  option; if 0, dmenu appears at bottom     */
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static const char *fonts[] = {
 	"Source Sans Pro:size=14px"
@@ -17,3 +15,9 @@ static const char *outbgcolor  = "#00ffff";
 static const char *outfgcolor  = "#000000";
 /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
 static unsigned int lines      = 0;
+
+/*
+ * Characters not considered part of a word while deleting words
+ * for example: " /?\"&[]"
+ */
+static const char worddelimiters[] = " ";

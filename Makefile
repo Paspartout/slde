@@ -34,11 +34,11 @@ install:
 
 clean:
 	@cd dwm && make $@
-	@cd dwm && rm config.h
+	@cd dwm && rm -f config.h
 	@cd dmenu && make $@
-	@cd dmenu && rm config.h
+	@cd dmenu && rm -f config.h
 	@cd st && make $@
-	@cd st && rm config.h
+	@cd st && rm -f config.h
 	@rm -f config/dwm.h
 	@rm -f config/dmenu.h
 	@rm -f config/st.h
