@@ -7,8 +7,6 @@
 [submodule "st"]
 	path = st
 	url = https://github.com/Paspartout/st
-	branch = slde
 [submodule "dwm"]
 	path = dwm
 	url = https://github.com/Paspartout/dwm.git
-	branch = paspartout
