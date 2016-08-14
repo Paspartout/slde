@@ -1,4 +1,4 @@
-colorfile = colors/google.yml
+colorfile ?= colors/google.yml
 
 all: dwm dmenu st
 
@@ -10,37 +10,22 @@ st: st/config.h
 	@cd $@ && make
 
 dwm/config.h: config/dwm.h
-	@ln config/dwm.h $@
+	./bin/colortpl ${colorfile} $< >$@
 
 dmenu/config.h: config/dmenu.h
-	@ln config/dmenu.h $@
+	./bin/colortpl ${colorfile} $< >$@
 
 st/config.h: config/st.h
-	@ln config/st.h $@
+	./bin/colortpl ${colorfile} $< >$@
 
-config/dwm.h:
-	./bin/colortpl $(colorfile) config/dwm-tpl.h >$@
-
-config/dmenu.h:
-	./bin/colortpl $(colorfile) config/dmenu-tpl.h >$@
-
-config/st.h:
-	./bin/colortpl $(colorfile) config/st-tpl.h >$@
-
-install:
+install: all
 	@cd dwm && make $@
 	@cd dmenu && make $@
 	@cd st && make $@
 
 clean:
-	@cd dwm && make $@
-	@cd dwm && rm -f config.h
-	@cd dmenu && make $@
-	@cd dmenu && rm -f config.h
-	@cd st && make $@
-	@cd st && rm -f config.h
-	@rm -f config/dwm.h
-	@rm -f config/dmenu.h
-	@rm -f config/st.h
+	@cd dwm && make $@ && rm -f config.h
+	@cd dmenu && make $@ && rm -f config.h
+	@cd st && make $@ && rm -f config.h
 
 .PHONY: dwm dmenu st clean install
