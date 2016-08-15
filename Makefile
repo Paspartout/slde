@@ -1,6 +1,7 @@
 colorfile ?= colors/google.yml
+BINPATH ?= /usr/local/bin
 
-all: dwm dmenu st
+all: dwm dmenu st bin/notify
 
 dwm: dwm/config.h
 	@cd $@ && make
@@ -18,10 +19,16 @@ dmenu/config.h: config/dmenu.h
 st/config.h: config/st.h
 	./bin/colortpl ${colorfile} $< >$@
 
+bin/notify: bin/notify.tpl
+	./bin/colortpl ${colorfile} $< >$@
+	@chmod +x $@
+
 install: all
 	@cd dwm && make $@
 	@cd dmenu && make $@
 	@cd st && make $@
+	@cp bin/notify ${BINPATH}/notify
+	@chmod 755 ${BINPATH}/notify
 
 clean:
 	@cd dwm && make $@ && rm -f config.h
