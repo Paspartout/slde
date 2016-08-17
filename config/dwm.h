@@ -14,8 +14,8 @@ static const char normbgcolor[]     = "#base00";
 static const char normbordercolor[] = "#base07";
 
 static const char selfgcolor[]      = "#base06";
-static const char selbgcolor[]      = "#base0D";
-static const char selbordercolor[]  = "#base0D";
+static const char selbgcolor[]      = "#base09";
+static const char selbordercolor[]  = "#base09";
 
 static const char *colors[SchemeLast][3]      = {
 	/*               fg         bg         border   */
@@ -24,7 +24,7 @@ static const char *colors[SchemeLast][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5" };
+static const char *tags[] = { "tt", "t1", "t2", "web", "mus" };
 
 static const Rule rules[] = {
 	/* xprop(1):

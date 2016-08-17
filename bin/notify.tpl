@@ -38,9 +38,8 @@ w=400
 h=100
 barh=25 # height of top bar
 
-x=$(($rw - $w))
-y=$barh
-
+x=$((($rw - $w)/2))
+y=$(($rh - $h))
 
 echo "$*" |
 dzen2 -y $y -x $x -w $w -h $h \

@@ -1,13 +1,15 @@
-colorfile ?= colors/google.yml
+colorfile ?= colors/atelier-dune.yml
 BINPATH ?= /usr/local/bin
 
-all: dwm dmenu st bin/notify
+all: dwm dmenu st dzen bin/notify
 
 dwm: dwm/config.h
 	@cd $@ && make
 dmenu: dmenu/config.h
 	@cd $@ && make
 st: st/config.h
+	@cd $@ && make
+dzen:
 	@cd $@ && make
 
 dwm/config.h: config/dwm.h
@@ -27,6 +29,7 @@ install: all
 	@cd dwm && make $@
 	@cd dmenu && make $@
 	@cd st && make $@
+	@cd dzen && make $@
 	@cp bin/notify ${BINPATH}/notify
 	@chmod 755 ${BINPATH}/notify
 
@@ -34,5 +37,7 @@ clean:
 	@cd dwm && make $@ && rm -f config.h
 	@cd dmenu && make $@ && rm -f config.h
 	@cd st && make $@ && rm -f config.h
+	@cd dzen && make $@
+	@rm -f bin/notify
 
 .PHONY: dwm dmenu st clean install
